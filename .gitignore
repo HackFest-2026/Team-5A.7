@@ -1,0 +1,32 @@
+.env*
+!.env.example
+!.env.ollama.example
+
+# Python environments and generated caches
+.venv/
+venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# Local databases and downloaded source datasets (import separately)
+*.duckdb
+*.duckdb.wal
+data/*.zip
+data/uci_source/
+data/olist_source/
+
+# Machine-specific settings, browser profiles and temporary files
+.codex/
+.agents/
+.aws/
+.vscode/
+.idea/
+Microsoft/
+*.log
+*.tmp
+node_modules/
+playwright-report/
+test-results/

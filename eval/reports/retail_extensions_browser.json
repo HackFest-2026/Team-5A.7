@@ -1,0 +1,263 @@
+{
+  "generated_at": "2026-10-11T07:58:50.598194+00:00",
+  "source_hash": "ae6759d4feddea817ef96c92055d7aef328bff8dabaa53673b5788da811028ec",
+  "scope": "Actual Chromium, rules-mode server; does not prove live model inference",
+  "checks": [
+    {
+      "question": "Show the best products in 2011",
+      "kind": "clarify",
+      "destination": null,
+      "controls": null,
+      "verified_on_screen": "no actions",
+      "latency_ms": 99,
+      "calculation_evidence": false
+    },
+    {
+      "question": "Quantity sold",
+      "kind": "act",
+      "destination": "uci.sales.overview",
+      "controls": {
+        "page_id": "uci.sales.overview",
+        "filters": {},
+        "date_range": {
+          "start": "2011-01-01",
+          "end": "2011-12-09",
+          "label": "01 Jan 2011 \u2013 09 Dec 2011"
+        },
+        "compare": "previous_period",
+        "compare_range": null,
+        "sort": {
+          "field": "revenue",
+          "dir": "desc"
+        },
+        "top_n": 10,
+        "grain": "auto"
+      },
+      "verified_on_screen": "Checked: view loaded and controls match your request.",
+      "latency_ms": 383,
+      "calculation_evidence": true
+    },
+    {
+      "question": "How many orders in November 2011?",
+      "kind": "act",
+      "destination": "uci.sales.overview",
+      "controls": {
+        "page_id": "uci.sales.overview",
+        "filters": {},
+        "date_range": {
+          "start": "2011-11-01",
+          "end": "2011-11-30",
+          "label": "Nov 2011"
+        },
+        "compare": "previous_period",
+        "compare_range": null,
+        "sort": {
+          "field": "revenue",
+          "dir": "desc"
+        },
+        "top_n": 25,
+        "grain": "auto"
+      },
+      "verified_on_screen": "Checked: view loaded and controls match your request.",
+      "latency_ms": 323,
+      "calculation_evidence": true
+    },
+    {
+      "question": "What was average order value in November 2011?",
+      "kind": "act",
+      "destination": "uci.sales.customers",
+      "controls": {
+        "page_id": "uci.sales.customers",
+        "filters": {},
+        "date_range": {
+          "start": "2011-11-01",
+          "end": "2011-11-30",
+          "label": "Nov 2011"
+        },
+        "compare": "previous_period",
+        "compare_range": null,
+        "sort": {
+          "field": "retail_aov",
+          "dir": "desc"
+        },
+        "top_n": 25,
+        "grain": "auto"
+      },
+      "verified_on_screen": "Checked: view loaded and controls match your request.",
+      "latency_ms": 258,
+      "calculation_evidence": true
+    },
+    {
+      "question": "Who are the top 10 customers by revenue in 2011?",
+      "kind": "act",
+      "destination": "uci.sales.customers",
+      "controls": {
+        "page_id": "uci.sales.customers",
+        "filters": {},
+        "date_range": {
+          "start": "2011-01-01",
+          "end": "2011-12-09",
+          "label": "01 Jan 2011 \u2013 09 Dec 2011"
+        },
+        "compare": "previous_period",
+        "compare_range": null,
+        "sort": {
+          "field": "revenue",
+          "dir": "desc"
+        },
+        "top_n": 10,
+        "grain": "auto"
+      },
+      "verified_on_screen": "Checked: view loaded and controls match your request.",
+      "latency_ms": 346,
+      "calculation_evidence": true
+    },
+    {
+      "question": "Show revenue for customer 14646 in 2011",
+      "kind": "act",
+      "destination": "uci.sales.customers",
+      "controls": {
+        "page_id": "uci.sales.customers",
+        "filters": {
+          "customer_id": [
+            "14646"
+          ]
+        },
+        "date_range": {
+          "start": "2011-01-01",
+          "end": "2011-12-09",
+          "label": "01 Jan 2011 \u2013 09 Dec 2011"
+        },
+        "compare": "previous_period",
+        "compare_range": null,
+        "sort": {
+          "field": "revenue",
+          "dir": "desc"
+        },
+        "top_n": 25,
+        "grain": "auto"
+      },
+      "verified_on_screen": "Checked: view loaded and controls match your request.",
+      "latency_ms": 276,
+      "calculation_evidence": true
+    },
+    {
+      "question": "Compare revenue in November 2011 and December 2011",
+      "kind": "act",
+      "destination": "uci.sales.overview",
+      "controls": {
+        "page_id": "uci.sales.overview",
+        "filters": {},
+        "date_range": {
+          "start": "2011-12-01",
+          "end": "2011-12-09",
+          "label": "01 Dec 2011 \u2013 09 Dec 2011"
+        },
+        "compare": "custom",
+        "compare_range": {
+          "start": "2011-11-01",
+          "end": "2011-11-30",
+          "label": "Nov 2011"
+        },
+        "sort": {
+          "field": "revenue",
+          "dir": "desc"
+        },
+        "top_n": 25,
+        "grain": "auto"
+      },
+      "verified_on_screen": "Checked: view loaded and controls match your request.",
+      "latency_ms": 359,
+      "calculation_evidence": true
+    },
+    {
+      "question": "Compare first 9 days",
+      "kind": "act",
+      "destination": "uci.sales.overview",
+      "controls": {
+        "page_id": "uci.sales.overview",
+        "filters": {},
+        "date_range": {
+          "start": "2011-12-01",
+          "end": "2011-12-09",
+          "label": "01 Dec 2011 \u2013 09 Dec 2011"
+        },
+        "compare": "custom",
+        "compare_range": {
+          "start": "2011-11-01",
+          "end": "2011-11-09",
+          "label": "01 Nov 2011 \u2013 09 Nov 2011"
+        },
+        "sort": {
+          "field": "revenue",
+          "dir": "desc"
+        },
+        "top_n": 25,
+        "grain": "auto"
+      },
+      "verified_on_screen": "Checked: view loaded and controls match your request.",
+      "latency_ms": 360,
+      "calculation_evidence": true
+    },
+    {
+      "question": "Compare revenue in October 2011 and November 2011",
+      "kind": "act",
+      "destination": "uci.sales.overview",
+      "controls": {
+        "page_id": "uci.sales.overview",
+        "filters": {},
+        "date_range": {
+          "start": "2011-11-01",
+          "end": "2011-11-30",
+          "label": "Nov 2011"
+        },
+        "compare": "custom",
+        "compare_range": {
+          "start": "2011-10-01",
+          "end": "2011-10-31",
+          "label": "Oct 2011"
+        },
+        "sort": {
+          "field": "revenue",
+          "dir": "desc"
+        },
+        "top_n": 25,
+        "grain": "auto"
+      },
+      "verified_on_screen": "Checked: view loaded and controls match your request.",
+      "latency_ms": 409,
+      "calculation_evidence": true
+    },
+    {
+      "question": "Which products contributed most to the change?",
+      "kind": "act",
+      "destination": "uci.sales.overview",
+      "controls": {
+        "page_id": "uci.sales.overview",
+        "filters": {},
+        "date_range": {
+          "start": "2011-11-01",
+          "end": "2011-11-30",
+          "label": "Nov 2011"
+        },
+        "compare": "custom",
+        "compare_range": {
+          "start": "2011-10-01",
+          "end": "2011-10-31",
+          "label": "Oct 2011"
+        },
+        "sort": {
+          "field": "revenue",
+          "dir": "desc"
+        },
+        "top_n": 25,
+        "grain": "auto"
+      },
+      "verified_on_screen": "Checked: view loaded and controls match your request.",
+      "latency_ms": 447,
+      "calculation_evidence": true
+    }
+  ],
+  "passed": 10,
+  "javascript_errors": []
+}

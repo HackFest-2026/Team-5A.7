@@ -1,0 +1,238 @@
+{
+  "generated_at": "2026-10-11T07:58:00.092472+00:00",
+  "source_hash": "ae6759d4feddea817ef96c92055d7aef328bff8dabaa53673b5788da811028ec",
+  "scope": "Actual Chromium typography, three Olist pages, responsive alignment and metric disclosures",
+  "passed": 12,
+  "cases": [
+    {
+      "viewport": [
+        1440,
+        1000
+      ],
+      "page_id": "olist.sales.overview",
+      "font_sizes": {
+        "body": 15,
+        "title": 34,
+        "control": 14,
+        "widget": 17,
+        "table": 14,
+        "kpi": 14
+      },
+      "overflow": false,
+      "metric_disclosure": true,
+      "partial_warning": true,
+      "table_alignment": true
+    },
+    {
+      "viewport": [
+        1440,
+        1000
+      ],
+      "page_id": "olist.delivery.overview",
+      "font_sizes": {
+        "body": 15,
+        "title": 34,
+        "control": 14,
+        "widget": 17,
+        "table": 14,
+        "kpi": 14
+      },
+      "overflow": false,
+      "metric_disclosure": true,
+      "partial_warning": true,
+      "table_alignment": true
+    },
+    {
+      "viewport": [
+        1440,
+        1000
+      ],
+      "page_id": "olist.reviews.overview",
+      "font_sizes": {
+        "body": 15,
+        "title": 34,
+        "control": 14,
+        "widget": 17,
+        "table": 14,
+        "kpi": 14
+      },
+      "overflow": false,
+      "metric_disclosure": true,
+      "partial_warning": true,
+      "table_alignment": true
+    },
+    {
+      "viewport": [
+        1280,
+        900
+      ],
+      "page_id": "olist.sales.overview",
+      "font_sizes": {
+        "body": 15,
+        "title": 34,
+        "control": 14,
+        "widget": 17,
+        "table": 14,
+        "kpi": 14
+      },
+      "overflow": false,
+      "metric_disclosure": true,
+      "partial_warning": true,
+      "table_alignment": true
+    },
+    {
+      "viewport": [
+        1280,
+        900
+      ],
+      "page_id": "olist.delivery.overview",
+      "font_sizes": {
+        "body": 15,
+        "title": 34,
+        "control": 14,
+        "widget": 17,
+        "table": 14,
+        "kpi": 14
+      },
+      "overflow": false,
+      "metric_disclosure": true,
+      "partial_warning": true,
+      "table_alignment": true
+    },
+    {
+      "viewport": [
+        1280,
+        900
+      ],
+      "page_id": "olist.reviews.overview",
+      "font_sizes": {
+        "body": 15,
+        "title": 34,
+        "control": 14,
+        "widget": 17,
+        "table": 14,
+        "kpi": 14
+      },
+      "overflow": false,
+      "metric_disclosure": true,
+      "partial_warning": true,
+      "table_alignment": true
+    },
+    {
+      "viewport": [
+        1024,
+        900
+      ],
+      "page_id": "olist.sales.overview",
+      "font_sizes": {
+        "body": 15,
+        "title": 34,
+        "control": 14,
+        "widget": 17,
+        "table": 14,
+        "kpi": 14
+      },
+      "overflow": false,
+      "metric_disclosure": true,
+      "partial_warning": true,
+      "table_alignment": true
+    },
+    {
+      "viewport": [
+        1024,
+        900
+      ],
+      "page_id": "olist.delivery.overview",
+      "font_sizes": {
+        "body": 15,
+        "title": 34,
+        "control": 14,
+        "widget": 17,
+        "table": 14,
+        "kpi": 14
+      },
+      "overflow": false,
+      "metric_disclosure": true,
+      "partial_warning": true,
+      "table_alignment": true
+    },
+    {
+      "viewport": [
+        1024,
+        900
+      ],
+      "page_id": "olist.reviews.overview",
+      "font_sizes": {
+        "body": 15,
+        "title": 34,
+        "control": 14,
+        "widget": 17,
+        "table": 14,
+        "kpi": 14
+      },
+      "overflow": false,
+      "metric_disclosure": true,
+      "partial_warning": true,
+      "table_alignment": true
+    },
+    {
+      "viewport": [
+        390,
+        844
+      ],
+      "page_id": "olist.sales.overview",
+      "font_sizes": {
+        "body": 15,
+        "title": 28,
+        "control": 14,
+        "widget": 17,
+        "table": 14,
+        "kpi": 14
+      },
+      "overflow": false,
+      "metric_disclosure": true,
+      "partial_warning": true,
+      "table_alignment": true
+    },
+    {
+      "viewport": [
+        390,
+        844
+      ],
+      "page_id": "olist.delivery.overview",
+      "font_sizes": {
+        "body": 15,
+        "title": 28,
+        "control": 14,
+        "widget": 17,
+        "table": 14,
+        "kpi": 14
+      },
+      "overflow": false,
+      "metric_disclosure": true,
+      "partial_warning": true,
+      "table_alignment": true
+    },
+    {
+      "viewport": [
+        390,
+        844
+      ],
+      "page_id": "olist.reviews.overview",
+      "font_sizes": {
+        "body": 15,
+        "title": 28,
+        "control": 14,
+        "widget": 17,
+        "table": 14,
+        "kpi": 14
+      },
+      "overflow": false,
+      "metric_disclosure": true,
+      "partial_warning": true,
+      "table_alignment": true
+    }
+  ],
+  "javascript_errors": [],
+  "complete_period_warning_absent": true
+}

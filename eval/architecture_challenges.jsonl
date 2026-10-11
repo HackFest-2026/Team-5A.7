@@ -1,0 +1,8 @@
+{"id":"AC01","author":"Codex","question":"How many delivered orders were there in 2017?","start_page":"olist.sales.overview","page":"olist.sales.overview","metric":"olist_orders","year":"2017"}
+{"id":"AC02","author":"Codex","question":"What was average order value for SP in 2017?","start_page":"olist.sales.overview","page":"olist.sales.overview","metric":"olist_aov","year":"2017","state":"SP"}
+{"id":"AC03","author":"Codex","question":"Show average delivery time for RJ in 2017","start_page":"olist.sales.overview","page":"olist.delivery.overview","metric":"olist_delivery_days","year":"2017","state":"RJ"}
+{"id":"AC04","author":"Codex","question":"Show average review score for SP in 2017","start_page":"olist.delivery.overview","page":"olist.reviews.overview","metric":"olist_review_score","year":"2017","state":"SP"}
+{"id":"AC05","author":"Codex","question":"Show monthly sales value for SP in 2017","start_page":"olist.reviews.overview","page":"olist.sales.overview","metric":"olist_revenue","year":"2017","state":"SP","grain":"month"}
+{"id":"AC06","author":"Codex","question":"Show profit for SP in 2017","start_page":"olist.sales.overview","kind":"clarify"}
+{"id":"AC07","author":"Codex","question":"Show sales for Atlantis in 2017","start_page":"olist.sales.overview","kind":"clarify"}
+{"id":"AC08","author":"Codex","question":"Show sales for SP in 2017; then show average delivery time for SP in 2017; then show average review score for SP in 2017","start_page":"olist.sales.overview","page":"olist.reviews.overview","metric":"olist_review_score","year":"2017","state":"SP","steps":3}

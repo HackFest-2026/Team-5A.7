@@ -1,0 +1,84 @@
+{
+  "generated_at": "2026-10-11T07:58:01.779241+00:00",
+  "source_hash": "ae6759d4feddea817ef96c92055d7aef328bff8dabaa53673b5788da811028ec",
+  "passed": 4,
+  "scope": "Actual Chromium at desktop/laptop/tablet/mobile widths, dataset labels, requests, evidence and panel interactions",
+  "cases": [
+    {
+      "viewport": [
+        1440,
+        1000
+      ],
+      "datasets_checked": [
+        "synthetic",
+        "retail"
+      ],
+      "horizontal_overflow": false,
+      "active_dataset_navigation": true,
+      "technical_clutter_removed": true,
+      "answer_verified": true,
+      "evidence_link": true,
+      "source_details": true,
+      "new_chat": true,
+      "panel_controls": true,
+      "javascript_errors": []
+    },
+    {
+      "viewport": [
+        1280,
+        900
+      ],
+      "datasets_checked": [
+        "synthetic",
+        "retail"
+      ],
+      "horizontal_overflow": false,
+      "active_dataset_navigation": true,
+      "technical_clutter_removed": true,
+      "answer_verified": true,
+      "evidence_link": true,
+      "source_details": true,
+      "new_chat": true,
+      "panel_controls": true,
+      "javascript_errors": []
+    },
+    {
+      "viewport": [
+        1024,
+        900
+      ],
+      "datasets_checked": [
+        "synthetic",
+        "retail"
+      ],
+      "horizontal_overflow": false,
+      "active_dataset_navigation": true,
+      "technical_clutter_removed": true,
+      "answer_verified": true,
+      "evidence_link": true,
+      "source_details": true,
+      "new_chat": true,
+      "panel_controls": true,
+      "javascript_errors": []
+    },
+    {
+      "viewport": [
+        390,
+        844
+      ],
+      "datasets_checked": [
+        "synthetic",
+        "retail"
+      ],
+      "horizontal_overflow": false,
+      "active_dataset_navigation": true,
+      "technical_clutter_removed": true,
+      "answer_verified": true,
+      "evidence_link": true,
+      "source_details": true,
+      "new_chat": true,
+      "panel_controls": true,
+      "javascript_errors": []
+    }
+  ]
+}

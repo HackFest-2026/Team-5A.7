@@ -1,0 +1,249 @@
+{
+  "generated_at": "2026-10-11T07:38:44.323949+00:00",
+  "source_hash": "7cd2f59f0d2ed179bbf3125838bc5d3540791f990688eaa362e8d052d2c9edce",
+  "author": "Codex",
+  "independent_holdout": false,
+  "scope": "Agent-authored Windows Chromium regressions; original CSV/Decimal numerical expectations; rules mode",
+  "cases": [
+    {
+      "id": "AC01",
+      "question": "How many delivered orders were there in 2017?",
+      "destination_ok": true,
+      "controls_ok": true,
+      "calculation_ok": true,
+      "verification_ok": true,
+      "backend_latency_ms": 593.0,
+      "browser_latency_ms": 902.6,
+      "execution": {
+        "subrequests": 1,
+        "workflow_nodes": 5,
+        "state_actions": 1,
+        "backend_latency_ms": 593,
+        "post_render_calculation_ms": 20.3,
+        "post_render_nodes": 2
+      },
+      "slots": {
+        "tp": 2,
+        "fp": 0,
+        "fn": 0,
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1": 1.0,
+        "annotated_fields": [
+          "date_range",
+          "filters"
+        ]
+      }
+    },
+    {
+      "id": "AC02",
+      "question": "What was average order value for SP in 2017?",
+      "destination_ok": true,
+      "controls_ok": true,
+      "calculation_ok": true,
+      "verification_ok": true,
+      "backend_latency_ms": 616.9,
+      "browser_latency_ms": 848.8,
+      "execution": {
+        "subrequests": 1,
+        "workflow_nodes": 5,
+        "state_actions": 3,
+        "backend_latency_ms": 616.9,
+        "post_render_calculation_ms": 19.4,
+        "post_render_nodes": 2
+      },
+      "slots": {
+        "tp": 3,
+        "fp": 0,
+        "fn": 0,
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1": 1.0,
+        "annotated_fields": [
+          "date_range",
+          "filters"
+        ]
+      }
+    },
+    {
+      "id": "AC03",
+      "question": "Show average delivery time for RJ in 2017",
+      "destination_ok": true,
+      "controls_ok": true,
+      "calculation_ok": true,
+      "verification_ok": true,
+      "backend_latency_ms": 643.2,
+      "browser_latency_ms": 828.6,
+      "execution": {
+        "subrequests": 1,
+        "workflow_nodes": 5,
+        "state_actions": 3,
+        "backend_latency_ms": 643.2,
+        "post_render_calculation_ms": 5.1,
+        "post_render_nodes": 2
+      },
+      "slots": {
+        "tp": 3,
+        "fp": 0,
+        "fn": 0,
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1": 1.0,
+        "annotated_fields": [
+          "date_range",
+          "filters"
+        ]
+      }
+    },
+    {
+      "id": "AC04",
+      "question": "Show average review score for SP in 2017",
+      "destination_ok": true,
+      "controls_ok": true,
+      "calculation_ok": true,
+      "verification_ok": true,
+      "backend_latency_ms": 611.7,
+      "browser_latency_ms": 811.1,
+      "execution": {
+        "subrequests": 1,
+        "workflow_nodes": 5,
+        "state_actions": 3,
+        "backend_latency_ms": 611.7,
+        "post_render_calculation_ms": 6.9,
+        "post_render_nodes": 2
+      },
+      "slots": {
+        "tp": 3,
+        "fp": 0,
+        "fn": 0,
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1": 1.0,
+        "annotated_fields": [
+          "date_range",
+          "filters"
+        ]
+      }
+    },
+    {
+      "id": "AC05",
+      "question": "Show monthly sales value for SP in 2017",
+      "destination_ok": true,
+      "controls_ok": true,
+      "calculation_ok": true,
+      "verification_ok": true,
+      "backend_latency_ms": 637.8,
+      "browser_latency_ms": 871.6,
+      "execution": {
+        "subrequests": 1,
+        "workflow_nodes": 5,
+        "state_actions": 4,
+        "backend_latency_ms": 637.8,
+        "post_render_calculation_ms": 10.3,
+        "post_render_nodes": 2
+      },
+      "slots": {
+        "tp": 4,
+        "fp": 0,
+        "fn": 0,
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1": 1.0,
+        "annotated_fields": [
+          "date_range",
+          "filters",
+          "grain"
+        ]
+      }
+    },
+    {
+      "id": "AC06",
+      "question": "Show profit for SP in 2017",
+      "destination_ok": true,
+      "controls_ok": true,
+      "calculation_ok": null,
+      "verification_ok": true,
+      "backend_latency_ms": 578.7,
+      "browser_latency_ms": 680.6,
+      "execution": {
+        "subrequests": 1,
+        "workflow_nodes": 3,
+        "state_actions": 0,
+        "backend_latency_ms": 578.7
+      },
+      "slots": null
+    },
+    {
+      "id": "AC07",
+      "question": "Show sales for Atlantis in 2017",
+      "destination_ok": true,
+      "controls_ok": true,
+      "calculation_ok": null,
+      "verification_ok": true,
+      "backend_latency_ms": 570.8,
+      "browser_latency_ms": 639.4,
+      "execution": {
+        "subrequests": 1,
+        "workflow_nodes": 3,
+        "state_actions": 0,
+        "backend_latency_ms": 570.8
+      },
+      "slots": null
+    },
+    {
+      "id": "AC08",
+      "question": "Show sales for SP in 2017; then show average delivery time for SP in 2017; then show average review score for SP in 2017",
+      "destination_ok": true,
+      "controls_ok": true,
+      "calculation_ok": true,
+      "verification_ok": true,
+      "backend_latency_ms": 1881.3,
+      "browser_latency_ms": 2101.7,
+      "execution": {
+        "subrequests": 3,
+        "workflow_nodes": 15,
+        "state_actions": 8,
+        "backend_latency_ms": 1881.3,
+        "post_render_calculation_ms": 20.4,
+        "post_render_nodes": 6
+      },
+      "slots": {
+        "tp": 3,
+        "fp": 0,
+        "fn": 0,
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1": 1.0,
+        "annotated_fields": [
+          "date_range",
+          "filters"
+        ]
+      }
+    }
+  ],
+  "robustness": [
+    {
+      "check": "manual change during AI request",
+      "ok": true
+    },
+    {
+      "check": "render failure suppresses answer and cancels pending context",
+      "ok": true
+    },
+    {
+      "check": "query-matched figure source highlight",
+      "ok": true
+    }
+  ],
+  "javascript_errors": [],
+  "passed": 11,
+  "slot_metrics": {
+    "scope": "Only explicitly annotated dates, filters and grain; destination measured separately.",
+    "tp": 18,
+    "fp": 0,
+    "fn": 0,
+    "precision": 1.0,
+    "recall": 1.0,
+    "f1": 1.0
+  }
+}
