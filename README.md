@@ -1,30 +1,38 @@
-# Lumen Copilot — Windows hackathon demo
+# Lumen Copilot
 
-Current architecture improvements: [meeting review and implementation](docs/ARCHITECTURE_REVIEW.md). The final suite has 113 passing tests. Model configuration, inference, render receipts and independent browser verification are reported separately. Historical results below retain their original scope.
+A context-aware application assistant for navigating business dashboards and analyzing data through natural language.
 
-New: [retail reliability and analysis improvements](docs/RETAIL_IMPROVEMENTS.md): clarification choices, partial-period warnings, order count, quantity sold, average order value, customer-ID rankings and product contributors. Restart the app to load them.
+Lumen uses application metadata to choose a page, configure supported controls, calculate results and present evidence. It checks the applied page, filters, dates and sorting before completing an answer.
 
-Earlier audit: [11 October data-question audit](docs/DATA_QUESTION_AUDIT.md). Historical pre-extension checks: 73 tests, 68 separate data probes, 323/323 reused destinations/states, 94 independent UCI checks, 80/80 browser states/destinations and live Groq/browser evidence. Earlier snapshots below retain their historical scope. Current configured Windows URL: http://localhost:8004.
+## Capabilities
 
-Lumen is a local, context-aware application agent: understand a request → retrieve a metadata-backed page → plan typed controls → validate → query DuckDB → show calculation evidence → apply UI actions → verify the applied state.
+- Navigate pages and reports using natural-language requests.
+- Apply filters, date ranges, sorting, time grain and top-N controls.
+- Analyze trends, period comparisons, rankings and numerical contributors.
+- Ask clarification questions for ambiguous or unsupported requests.
+- Follow up on an analysis, undo actions and save views in the browser.
+- Inspect metric definitions, dataset scope, filters, dates and SQL evidence.
+- See whether rules or an LLM understood a request, including model errors and fallback status.
 
-Read [WINDOWS_START_HERE.md](WINDOWS_START_HERE.md), [real-data policy](docs/REAL_DATA.md), and [hackathon review](docs/HACKATHON_REVIEW.md).
+## Datasets
+
+| Workspace | Data | Supported analysis | Currency |
+| --- | --- | --- | --- |
+| Sahyadri Retail | Synthetic business demonstration with 209 metadata-defined pages | Sales and operational dashboards, navigation, filtering and comparisons | INR |
+| UCI Online Retail II | Historical retail invoice lines | Revenue, orders, quantity, average order value, country/product/customer rankings and comparisons | GBP |
+| Olist Brazil | Historical Brazilian e-commerce records | Sales, delivery performance and review-score comparisons | BRL |
+
+Each workspace is visibly labelled and uses a separate DuckDB database. Real datasets require an import; generated demonstration records are kept separate.
+
+UCI revenue is positive invoice-line quantity multiplied by unit price, excluding cancellations, returns, invalid required values and exact duplicates. It is not net revenue after returns. Olist sales exclude freight and non-delivered orders. Delivery and review calculations use their documented eligible order cohorts.
+
+Partial months are identified in the interface. Above-average monthly revenue uses complete calendar-month totals, including zero-activity months. Explanations identify numerical contributors; external causes require supporting evidence.
+
+Dataset sources and definitions: [UCI Online Retail II](docs/REAL_DATA.md) and [Olist Brazil](docs/OLIST_DATA.md).
 
 ## Run on Windows
 
-Python 3.12, 64-bit recommended (3.11–3.13 supported). From this folder:
-
-```powershell
-.\setup.bat                       # first installation; Internet needed for dependencies
-.\start.bat                       # subsequent starts; uses .venv\Scripts\python.exe
-# Open the URL printed by start.bat (this workspace: http://localhost:8004); stop with Ctrl+C.
-```
-
-This workspace already has its Windows virtual environment, Ollama configuration and imported official UCI workbook. No paid API is needed. Runtime data, charts, fonts and model weights are local. The launchers do not require PowerShell activation or an execution-policy change. They preserve failed exit codes and show diagnostic/port errors.
-
-## Fresh checkout from GitHub
-
-API keys, virtual environments, imported databases and downloaded datasets are excluded from Git. A fresh checkout starts with the synthetic demo; run setup and start to create its local environment and data.
+Install 64-bit Python 3.12, then run:
 
 ```powershell
 git clone https://github.com/HackFest-2026/Team-5A.7.git
@@ -33,9 +41,35 @@ cd Team-5A.7
 .\start.bat
 ```
 
-Keep credentials only in your local `.env`. Use `.env.example` or `.env.ollama.example` as configuration templates; never commit API keys. Open the URL printed by the launcher rather than assuming the original laptop's port.
+Open the URL printed by the launcher. Stop the server with `Ctrl+C`.
 
-To enable the real-data modes, download the official sources described in [UCI instructions](docs/REAL_DATA.md) and [Olist instructions](docs/OLIST_DATA.md), stop Lumen, then import:
+Setup installs dependencies into the project virtual environment. Startup creates the synthetic demo data when needed. API keys, virtual environments, imported databases and downloaded datasets are excluded from Git.
+
+See [Windows setup and troubleshooting](WINDOWS_START_HERE.md) for details.
+
+## Model configuration
+
+Lumen supports rules-only understanding, hybrid rules/LLM understanding and LLM mode. Local inference uses Ollama; an optional Groq configuration is also supported.
+
+For Ollama, install Ollama and prepare the model:
+
+```powershell
+ollama pull qwen2.5:3b
+ollama create lumen-qwen -f Modelfile
+```
+
+Use `.env.ollama.example` as your local `.env` configuration template. Keep API keys only in `.env`; `.env.example` documents the other configuration options.
+
+```powershell
+.\.venv\Scripts\python.exe doctor.py --llm
+.\start.bat
+```
+
+The interface reports actual model request status separately from configuration. `/api/health` exposes request, response and error counts. Rules fallback is shown when a model request fails.
+
+## Import real datasets
+
+Download the official files using the [UCI instructions](docs/REAL_DATA.md) and [Olist instructions](docs/OLIST_DATA.md). Stop Lumen before importing:
 
 ```powershell
 .\.venv\Scripts\python.exe -m backend.data.import_retail .\data\uci_source\online_retail_II.xlsx
@@ -43,79 +77,59 @@ To enable the real-data modes, download the official sources described in [UCI i
 .\start.bat
 ```
 
-Published evaluation reports describe the measured workspace and source snapshots. They do not imply that a fresh checkout has imported the real datasets or successfully called a model.
+The UCI importer accepts the original Excel workbook or CSV exports. Import reports record row counts, date coverage, cleaning exclusions and source attribution. Select an imported dataset from the workspace selector.
 
-## Existing and new capabilities
+## Example requests
 
-The preserved synthetic Sahyadri Retail demo has 209 metadata-defined pages spanning sales, inventory, delivery, marketing, support and customers. It supports navigation, filters, dates, comparisons, top-N, sorting, time grain, follow-ups, undo, SQL evidence and confirmed browser-local saved views.
+**Synthetic retail**
 
-A separate **UCI Online Retail II** mode adds sales overview and customer-ranking pages using genuinely imported historical data. It has monthly revenue, country revenue, product StockCode rankings, period comparisons, numerical contributors and the same copilot/action/verification loop. Use the dataset selector above page search. Synthetic pages and real-data pages are visibly labelled; synthetic records never enter the UCI tables.
+- Show South revenue for August.
+- Top 5 cities by revenue last quarter.
+- What about North?
 
-The official workbook has 1,067,371 source rows across two sheets. Under the documented positive-sales cleaning policy, 1,007,913 sales rows are retained and 59,458 excluded. Eligible coverage: 2009-12-01 to 2011-12-09. Revenue is positive invoice-line Quantity × Price in **GBP**, excluding cancellations, returns, invalid required values and exact duplicate rows. Missing customer IDs are retained. It is not net revenue after returns. December 2011 is partial and is labelled accordingly.
+**UCI Online Retail II**
 
-Source: Chen, D. (2012), [UCI Online Retail II](https://archive.ics.uci.edu/dataset/502/online+retail+ii), DOI:10.24432/C5CG6D, CC BY 4.0. The report includes actual source columns, aliases, hashes, cleaning policy, exclusions and date coverage at `/api/datasets`.
+- Show monthly revenue for 2011.
+- Which months had revenue above average in 2011?
+- Who are the top 10 customers by revenue in 2011?
+- Compare revenue in October 2011 and November 2011.
 
-## Local model
+**Olist Brazil**
 
-The current `.env` selects Groq; local Ollama is supported at `http://localhost:11434/v1` with model `lumen-qwen`. Keep configuration and actual inference status separate. The supplied Modelfile uses installed Qwen2.5 3B with an 8192-token context; the prompt includes retrieved page candidates to reduce memory and latency.
+- Show monthly sales value for 2017.
+- Top 5 states by late delivery rate in 2017.
+- Compare review scores for late and on-time deliveries in 2017.
 
-```powershell
-ollama pull qwen2.5:3b             # only if not already installed
-ollama create lumen-qwen -f Modelfile
-.\.venv\Scripts\python.exe doctor.py --llm
-.\start.bat
-```
+Follow an analysis with `undo` or `save this view`. Relative dates use the active dataset's reference date.
 
-Configuration is not proof of inference. `/api/health` reports configuration and model request/response/error counts. Every answer shows understanding source and actual model request status. Model errors and rules fallback are visible. Hybrid uses rules for grounded requests and selectively requests the model. Force ordinary business questions through Ollama for a rehearsal:
+## Architecture
 
-```powershell
-$env:LUMEN_AGENT_MODE='llm'
-.\start.bat
-# Later, clear the override to return to .env's hybrid mode:
-Remove-Item Env:LUMEN_AGENT_MODE
-```
+| Component | Purpose |
+| --- | --- |
+| FastAPI and Python | Backend endpoints and application services |
+| LangGraph | Stateful understanding, planning, validation, execution and response workflow |
+| Application metadata graph | Page hierarchy, widgets, controls and relationships |
+| BM25 and TF-IDF retrieval | Find relevant pages and components |
+| DuckDB | Dataset storage and analytical SQL execution |
+| Ollama / optional Groq | Model-based intent and slot understanding |
+| HTML, CSS, JavaScript and Chart.js | Dashboard, charts and embedded copilot |
+| Pytest and Playwright | Backend tests and browser verification |
 
-Initial large-context calls timed out during this session. The revised prompt and request-grounded JSON schema subsequently passed live grounding checks: a recorded synthetic turn took 3.63 seconds, and retail examples took 3.88 to 4.40 seconds. These are individual measurements, not a model performance benchmark. Cold loading and laptop load can still affect latency; the fallback is explicit.
+An optional read-only Baserow adapter imports table/schema snapshots. Connection instructions are in [No-code integration](docs/NO_CODE_INTEGRATION.md).
 
-## Reproduce evidence
+## Validation
 
 ```powershell
 .\.venv\Scripts\python.exe -m pip install -r requirements-dev.txt
 .\.venv\Scripts\python.exe -m pytest -q
-.\.venv\Scripts\python.exe doctor.py --llm
 .\.venv\Scripts\python.exe -m eval.run_eval
-# Browser checks need the app running at the supplied URL:
 .\.venv\Scripts\python.exe -m playwright install chromium
+# Run the app first; use the URL printed by the launcher.
 .\.venv\Scripts\python.exe -m eval.run_e2e --url http://localhost:8000
-.\.venv\Scripts\python.exe -m eval.run_retail_checks .\data\uci_source\online_retail_II.xlsx
-.\.venv\Scripts\python.exe -m eval.run_fresh_challenges
-.\.venv\Scripts\python.exe -m eval.run_fresh_challenges --browser --url http://localhost:8000
 ```
 
-`eval/reports/` contains separate reused-benchmark, Windows browser, live-model, real-data independent and human-task results. The three initial human-task questions came from the project user's requirements; they are not an independent unseen holdout. Collect new questions in `eval/fresh_human_challenges.jsonl`, freeze labels first, and keep their results separate. See [challenge protocol](eval/FRESH_CHALLENGES.md) and [current verification report](docs/VERIFICATION_REPORT.md) for measured results and remaining checks.
+Dataset checks and browser checks require their corresponding data and runtime. Evaluation reports distinguish backend correctness, model inference and browser verification. Recorded results include source snapshots and evaluation scope; regression cases are not an independent unseen benchmark. See [verification details](docs/VERIFICATION_REPORT.md) and [evaluation protocol](eval/FRESH_CHALLENGES.md).
 
-## Demo requests
+## Scope
 
-Synthetic: `show south revenue for august`; `Why did South revenue drop in August?`; `top 5 cities by revenue last quarter`; `what about north?`; `undo`; `save this view`.
-
-UCI: `Show monthly revenue for 2011`; `Top 5 countries by revenue in 2011`; `Top 5 products by revenue in 2011`; `Compare revenue in two available months`; `what about France?`; `undo`; `save this view`.
-
-Relative dates follow the active dataset's reference date, not the laptop clock. Unsupported fields or unavailable periods should clarify. UCI transactions cannot establish stockout, flood, delivery, churn or marketing causes. Explanations identify numerical contributors; external causes require supporting evidence.
-
-Scope: one local tenant; no authentication, roles, external platform navigation/write-back, durable chat database, or production-readiness claim. A read-only Baserow UCI table/schema adapter is available; live platform verification requires an actual endpoint/table/token. Chat/undo are server memory; saved views persist in the same browser/origin. Voice support is browser-dependent and may use an online service; typed input is the reliable local demonstration.
-
-## Judge checklist and optional no-code connection
-
-Open `/readiness` directly for capability counts, current model configuration versus actual request counts, KPI evidence, report source stamps and unsupported scopes. Retrieval evaluation now reports set-based precision and relevant-page recall alongside MRR and first-hit rates. See [KPI coverage](docs/KPI_COVERAGE.md) and [Baserow connection instructions](docs/NO_CODE_INTEGRATION.md). Additional databases are optional; keep the complete verified sales workflow as the presentation baseline.
-
-Monthly-average requests: `Which months had revenue above average in 2011?` (UCI) or `in which month was the revenue more than average` (current page scope). Average means the arithmetic mean of complete calendar-month totals, including zero-activity months. Partial edge months are excluded with a note; the chart and SQL evidence use the same aligned dates. Follow-ups preserve this analysis. Add a year/date range when you want to override the selected scope.
-
-
-## Refined dashboard interface
-
-The dashboard now separates navigation, view controls, charts and the copilot, with responsive drawers on smaller screens. Developer traces and framework names are removed from ordinary answers; understanding status, applied-state checks and calculation evidence remain visible or expandable. Source information and saved views are sidebar disclosures. See [UI verification](docs/UI_REDESIGN.md).
-
-
-## Olist Brazil real-data workspace
-
-The official Olist ZIP is downloaded and imported into a separate DuckDB database. Select **Olist Brazil / real data** for Sales, Delivery and Reviews pages in BRL. Ask for monthly sales, late-delivery state rankings and review-score comparisons for late versus on-time orders. Existing UCI and synthetic workflows are preserved. See [definitions, source, limitations and checks](docs/OLIST_DATA.md). Restart start.bat and hard-refresh your browser to load this addition.
+Lumen is a single-tenant local application. Chat and undo state live in server memory; saved views persist in the same browser and origin. Authentication, role-based access, external-platform UI control and write-back are outside the current scope. The Baserow adapter requires a configured endpoint and credentials for live use.
