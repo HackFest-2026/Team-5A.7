@@ -1,0 +1,27 @@
+[
+  {
+    "file": "Chart.js-LICENSE.txt",
+    "source": "https://raw.githubusercontent.com/chartjs/Chart.js/v4.5.1/LICENSE.md",
+    "sha256": "41a84aa2caba645f966a18d9c2056b73e6d3a81d80bc0046bc0011a2634d4cce"
+  },
+  {
+    "file": "D3-LICENSE.txt",
+    "source": "https://raw.githubusercontent.com/d3/d3/v7.9.0/LICENSE",
+    "sha256": "3e6849627f74ff73c257a3ae1efb574015d94fc1035c05ec3c15805165efcbc4"
+  },
+  {
+    "file": "BricolageGrotesque-OFL.txt",
+    "source": "https://raw.githubusercontent.com/google/fonts/main/ofl/bricolagegrotesque/OFL.txt",
+    "sha256": "4b5a7d8f37f5602621c8a8d7358a6a2e71317e6c231c661e15aef0275d3e07ba"
+  },
+  {
+    "file": "IBMPlexSans-OFL.txt",
+    "source": "https://raw.githubusercontent.com/google/fonts/main/ofl/ibmplexsans/OFL.txt",
+    "sha256": "7e6b2818edbd8f6a01ae80641cc8f16a51080d08fb4e532be3a0b6f74adb07da"
+  },
+  {
+    "file": "KurkleColor-LICENSE.txt",
+    "source": "https://raw.githubusercontent.com/kurkle/color/v0.3.2/LICENSE.md",
+    "sha256": "2859c50313bad2ba77b081410c477beaf92b60ca13a77a248d89859a6dd6ac81"
+  }
+]

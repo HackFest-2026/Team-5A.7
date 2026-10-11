@@ -43,7 +43,7 @@ cd Team-5A.7
 
 Open the URL printed by the launcher. Stop the server with `Ctrl+C`.
 
-Setup installs dependencies into the project virtual environment. Startup creates the synthetic demo data when needed. API keys, virtual environments, imported databases and downloaded datasets are excluded from Git.
+Setup installs dependencies into the project virtual environment and creates the synthetic demo data before running diagnostics. API keys, virtual environments, imported databases and downloaded datasets are excluded from Git.
 
 See [Windows setup and troubleshooting](WINDOWS_START_HERE.md) for details.
 
@@ -133,3 +133,7 @@ Dataset checks and browser checks require their corresponding data and runtime. 
 ## Scope
 
 Lumen is a single-tenant local application. Chat and undo state live in server memory; saved views persist in the same browser and origin. Authentication, role-based access, external-platform UI control and write-back are outside the current scope. The Baserow adapter requires a configured endpoint and credentials for live use.
+
+## Acknowledgements
+
+See [external projects, datasets and development assistance](ACKNOWLEDGEMENTS.md) for source attribution and licence details. Bundled library and font licence texts are included in [third-party notices](frontend/vendor/licenses/).

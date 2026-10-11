@@ -15,6 +15,9 @@ __pycache__/
 *.duckdb
 *.duckdb.wal
 data/*.zip
+data/*.csv
+data/*.xlsx
+data/*.xls
 data/uci_source/
 data/olist_source/
 
@@ -30,3 +33,5 @@ Microsoft/
 node_modules/
 playwright-report/
 test-results/
+.review-check/
+data/connectors/

@@ -21,6 +21,8 @@ def main():
         subprocess.check_call([str(python), "-c", "import sys,struct; assert (3,11)<=sys.version_info[:2]<(3,14) and struct.calcsize('P')==8, 'Existing .venv must use 64-bit Python 3.11-3.13. Rename .venv and rerun setup.bat.'"])
         subprocess.check_call([str(python), "-m", "pip", "install", "--upgrade", "pip"])
         subprocess.check_call([str(python), "-m", "pip", "install", "-r", "requirements.txt"])
+        # A fresh checkout excludes local databases; prepare them before diagnostics.
+        subprocess.check_call([str(python), "-c", "from run import ensure_data; ensure_data()"])
         subprocess.check_call([str(python), "doctor.py"])
         return subprocess.call([str(python), "run.py", *sys.argv[1:]])
     except (OSError, subprocess.CalledProcessError) as exc:
